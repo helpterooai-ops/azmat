@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'أزمات - تسجيل الدخول',
-      // دعم الاتجاه من اليمين للشمال للغة العربية
       builder: (context, child) {
         return Directionality(
           textDirection: TextDirection.rtl,
@@ -36,13 +35,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // لوحة الألوان المخصصة (نظام تصميم دافئ وفخم)
-  static const Color backgroundColor = Color(0xFFF5F4EE); // أوف وايت دافئ
-  static const Color primaryGreen = Color(0xFF1B4D2E);    // زيتي داكن
-  static const Color accentBeige = Color(0xFFD3B083);     // بيج ذهبي
-  static const Color cardWhite = Color(0xFFFFFFFF);      // كروت بيضاء ناصعة
-  static const Color textDark = Color(0xFF1A1D1E);       // نص داكن ناعم
-  static const Color textMuted = Color(0xFF7A827E);      // نص فرعي رمادي زيتي
+  static const Color backgroundColor = Color(0xFFF5F4EE);
+  static const Color primaryGreen = Color(0xFF1B4D2E);
+  static const Color accentBeige = Color(0xFFD3B083);
+  static const Color cardWhite = Color(0xFFFFFFFF);
+  static const Color textDark = Color(0xFF1A1D1E);
+  static const Color textMuted = Color(0xFF7A827E);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               const SizedBox(height: 20),
 
-              // 1. الشعار الفاخر (Logo & Badge)
+              // الشعار
               Center(
                 child: Container(
                   width: 90,
@@ -86,7 +84,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 24),
 
-              // 2. العناوين الترحيبية
               const Text(
                 'مرحباً بك في أزمات',
                 textAlign: TextAlign.center,
@@ -110,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 32),
 
-              // 3. نموذج إدخال البريد وكلمة المرور
+              // حقول المدخلات
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -126,17 +123,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 child: Column(
                   children: [
-                    // حقل البريد الإلكتروني
                     _buildTextField(
                       controller: _emailController,
                       hintText: 'البريد الإلكتروني أو اسم المستخدم',
                       icon: Icons.alternate_email_rounded,
                       keyboardType: TextInputType.emailAddress,
                     ),
-
                     const SizedBox(height: 16),
-
-                    // حقل كلمة المرور
                     _buildTextField(
                       controller: _passwordController,
                       hintText: 'كلمة المرور',
@@ -149,10 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         });
                       },
                     ),
-
                     const SizedBox(height: 12),
-
-                    // رابط نسيت كلمة المرور
                     Align(
                       alignment: Alignment.centerLeft,
                       child: TextButton(
@@ -172,10 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-
                     const SizedBox(height: 20),
-
-                    // زر تسجيل الدخول الرئيسي
                     SizedBox(
                       width: double.infinity,
                       height: 54,
@@ -204,7 +191,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 28),
 
-              // 4. فاصل أجهزة الـ Social Login
               Row(
                 children: [
                   Expanded(child: Divider(color: Colors.black.withOpacity(0.08))),
@@ -225,7 +211,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 20),
 
-              // 5. شبكة أزرار تسجيل الدخول الاجتماعي (Social Logins)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -258,7 +243,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 12),
 
-              // زر إضافي للتحقق عبر رقم الجوال / SMS
+              // تعديل السطر 271 هنا لاستخدام BorderSide
               OutlinedButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.phone_android_rounded, size: 20, color: primaryGreen),
@@ -268,7 +253,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 14),
-                  side: Border.all(color: primaryGreen.withOpacity(0.2)),
+                  side: BorderSide(color: primaryGreen.withOpacity(0.2)),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
@@ -278,7 +263,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: 28),
 
-              // 6. خيار المتابعة كزائر + إنشاء حساب
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -300,7 +284,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
 
-              // زر دخول الزائر
               Center(
                 child: TextButton.icon(
                   onPressed: () {},
@@ -320,7 +303,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // ودجت مساعد لبناء حقول النص بتصميم Bento العالي
   Widget _buildTextField({
     required TextEditingController controller,
     required String hintText,
@@ -362,7 +344,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // ودجت مساعد لبناء أزرار منصات التواصل
   Widget _buildSocialButton({
     required String label,
     required IconData icon,
